@@ -14,11 +14,11 @@ function start() {
 
     const logInButton = document.querySelector("#logInButton");
 
-    signUpButton.addEventListener("submit", (e) => {
+    signUpButton.addEventListener("click", (e) => {
         signUp(e);
     })
 
-    logInButton.addEventListener("submit", (e) => {
+    logInButton.addEventListener("click", (e) => {
         logIn(e);
     })
 
@@ -35,8 +35,23 @@ function signUp(e) {
     let userInputForPasswordConfirmation = document.querySelector("#password_confirmation");
 
     let formData = {
+        username: userInputForUsername,
+        password: userInputForPassword,
+        password_confirmation: userInputForPasswordConfirmation
     }
-    fetch(`${BACKEND_URL}/users`)
+
+    let configObj = {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+    }
+
+    fetch(`${BACKEND_URL}/users`, configObj)
+    .then(resp => resp.json())
+    .then(parsedResp => console.log(parsedResp));
 }
 
 function logIn(e) {
