@@ -30,9 +30,9 @@ function signUp(e) {
     e.preventDefault();
     console.log("user hit sign up button");
 
-    let userInputForUsername = document.querySelector("#username");
-    let userInputForPassword = document.querySelector("#password");
-    let userInputForPasswordConfirmation = document.querySelector("#password_confirmation");
+    let userInputForUsername = document.querySelector("#username").value;
+    let userInputForPassword = document.querySelector("#password").value;
+    let userInputForPasswordConfirmation = document.querySelector("#password_confirmation").value;
 
     let formData = {
         username: userInputForUsername,
