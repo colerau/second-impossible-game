@@ -28,10 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const GAME_HEIGHT = 600;
 
     const player = new Player(GAME_WIDTH, GAME_HEIGHT);
+    const keyDown = new InputHandler();
 
     console.log(player);
     player.draw(context);
 
+    
 
 });
 
