@@ -6,10 +6,6 @@ const BACKEND_URL = "http://localhost:3000";
 //     .then(parsedResp => console.log(parsedResp));
 
 document.addEventListener("DOMContentLoaded", () => {
-    start();
-})
-
-function start() {
     const signUpButton = document.getElementById("signUpButton");
 
     const logInButton = document.querySelector("#logInButton");
@@ -37,10 +33,11 @@ function start() {
     player.draw(context);
 
 
+});
 
-
-    
-}
+// function gameLoop(context, player) {
+//     context.clearRect(0, 0, 800, 600);
+// }
 
 function signUp(e) {
     e.preventDefault();
