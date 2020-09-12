@@ -47,7 +47,16 @@ function signUp(e) {
 
     fetch(`${BACKEND_URL}/users`, configObj)
     .then(resp => resp.json())
-    .then(parsedResp => console.log(parsedResp));
+    .then(parsedResp => {
+        console.log(parsedResp);
+        if (parsedResp.username) {
+            const currentUser = document.querySelector("#current-user");
+            currentUser.innerText = parsedResp.username;
+    
+            const highScore = document.querySelector("#levels-completed");
+            highScore.innerText = `${parsedResp.levels_completed} levels completed`;
+        }
+    });
 }
 
 function logIn(e) {
@@ -71,5 +80,14 @@ function logIn(e) {
 
     fetch(`${BACKEND_URL}/login`, configObj)
     .then(resp => resp.json())
-    .then(parsedResp => console.log(parsedResp));
+    .then(parsedResp => {
+        console.log(parsedResp);
+        if (parsedResp.username) {
+            const currentUser = document.querySelector("#current-user");
+            currentUser.innerText = parsedResp.username;
+    
+            const highScore = document.querySelector("#levels-completed");
+            highScore.innerText = `${parsedResp.levels_completed} levels completed`;
+        }
+    });
 }

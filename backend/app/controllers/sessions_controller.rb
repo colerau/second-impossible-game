@@ -1,8 +1,4 @@
 class SessionsController < ApplicationController
-    def new
-        binding.pry
-    end
-
     def create
         user = User.find_by(username: params[:username])
 
