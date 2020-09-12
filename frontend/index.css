@@ -1,3 +1,21 @@
-h1, h2 {
+h1 {
     text-align: center;
 }
+
+#accountForms {
+    text-align: center;
+}
+
+#accountInfo {
+    text-align: center;
+}
+
+#gameScreenDiv {
+    text-align: center;
+}
+
+#gameScreen {
+    border: 1px solid black;
+
+}
+
