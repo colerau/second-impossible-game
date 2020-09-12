@@ -30,7 +30,7 @@ function signUp(e) {
     e.preventDefault();
     console.log("user hit sign up button");
 
-    let userInputForUsername = document.querySelector("#username").value;
+    let userInputForUsername = document.querySelector("#usernameForSignUp").value;
 
     let formData = {
         username: userInputForUsername
@@ -53,4 +53,23 @@ function signUp(e) {
 function logIn(e) {
     e.preventDefault();
     console.log("user hit log in button");
+
+    let userInputForUsername = document.querySelector("#usernameForLogIn").value;
+
+    let formData = {
+        username: userInputForUsername
+    }
+
+    let configObj = {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+    }
+
+    fetch(`${BACKEND_URL}/login`, configObj)
+    .then(resp => resp.json())
+    .then(parsedResp => console.log(parsedResp));
 }
