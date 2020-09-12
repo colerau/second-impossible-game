@@ -22,7 +22,11 @@ function start() {
         logIn(e);
     })
 
-
+    const canvas = document.getElementById("gameScreen");
+    const context = canvas.getContext('2d');
+    // fillRect(x coord, y coord, width, height)
+    context.fillRect(20, 20, 100, 100);
+    
     
 }
 
