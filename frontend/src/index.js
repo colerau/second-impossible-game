@@ -31,13 +31,9 @@ function signUp(e) {
     console.log("user hit sign up button");
 
     let userInputForUsername = document.querySelector("#username").value;
-    let userInputForPassword = document.querySelector("#password").value;
-    let userInputForPasswordConfirmation = document.querySelector("#password_confirmation").value;
 
     let formData = {
-        username: userInputForUsername,
-        password: userInputForPassword,
-        password_confirmation: userInputForPasswordConfirmation
+        username: userInputForUsername
     }
 
     let configObj = {
