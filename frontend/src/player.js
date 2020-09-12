@@ -13,6 +13,7 @@ class Player {
         // * fillRect(x, y, width, height)
         console.log(context);
         // return context.fillRect(this.position.x, this.position.y, this.width, this.height);
+        context.fillStyle = "#00f";
         context.fillRect(20, 20, 20, 20);
         return context;
 
