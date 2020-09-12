@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const canvas = document.getElementById("gameScreen");
     const context = canvas.getContext('2d');
-    context.clearRect(0, 0, 800, 600);
+    // context.clearRect(0, 0, 800, 600);
     // context.fillStyle = "#00f";
     // // fillRect(x coord, y coord, width, height)
     // context.fillRect(20, 20, 20, 20);
@@ -28,18 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const GAME_HEIGHT = 600;
 
     const player = new Player(GAME_WIDTH, GAME_HEIGHT);
-    const keyDown = new InputHandler();
+    const movement = new InputHandler(player);
 
-    console.log(player);
-    player.draw(context);
+    // player.draw(context);
 
-    
+    gameLoop(context, player);
 
 });
 
-// function gameLoop(context, player) {
-//     context.clearRect(0, 0, 800, 600);
-// }
+function gameLoop(context, player) {
+    context.clearRect(0, 0, 800, 600);
+    player.draw(context);
+}
 
 function signUp(e) {
     e.preventDefault();

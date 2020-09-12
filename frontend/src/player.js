@@ -28,4 +28,8 @@ class Player {
     // update(deltaTime) {
     //     this.xPosition += (5 / deltaTime);
     // }
+
+    moveLeft() {
+        
+    }
 }

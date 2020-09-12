@@ -1,9 +1,9 @@
 class InputHandler {
-    constructor() {
+    constructor(player) {
         document.addEventListener("keydown", (e) => {
             switch(e.key) {
                 case "a": 
-                    alert("move left");
+                    player
                     break;
                 case "d": 
                     alert("move right");
