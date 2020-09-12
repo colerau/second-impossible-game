@@ -10,8 +10,11 @@ class Player {
     }
 
     draw(context) {
-        // fillRect(x, y, width, height)
-        context.fillRect(this.position.x, this.position.x, this.position.y);
-        context.fillStyle("#00f");
+        // * fillRect(x, y, width, height)
+        console.log(context);
+        // return context.fillRect(this.position.x, this.position.y, this.width, this.height);
+        context.fillRect(20, 20, 20, 20);
+        return context;
+
     }
 }

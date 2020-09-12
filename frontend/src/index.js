@@ -34,6 +34,7 @@ function start() {
     const player = new Player(GAME_WIDTH, GAME_HEIGHT);
 
     console.log(player);
+    player.draw(context);
 
 
 
