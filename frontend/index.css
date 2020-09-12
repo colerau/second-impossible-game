@@ -1,8 +1,14 @@
+h1, h2, h3 {
+    font-family: Arial, helvetica, sans-serif;
+}
+
 h1 {
     text-align: center;
 }
 
 #accountForms {
+    font-family: Arial, helvetica, sans-serif;
+
     text-align: center;
 }
 
@@ -17,5 +23,13 @@ h1 {
 #gameScreen {
     border: 1px solid black;
 
+}
+
+#logInButton:hover {
+    background-color: lightblue;
+}
+
+#signUpButton:hover {
+    background-color: lightBlue;
 }
 

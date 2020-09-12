@@ -24,9 +24,13 @@ function start() {
 
     const canvas = document.getElementById("gameScreen");
     const context = canvas.getContext('2d');
+    context.clearRect(0, 0, 800, 600);
+    context.fillStyle = "#00f";
     // fillRect(x coord, y coord, width, height)
-    context.fillRect(20, 20, 100, 100);
+    context.fillRect(20, 20, 20, 20);
+
     
+
     
 }
 
