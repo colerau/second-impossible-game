@@ -9,4 +9,10 @@ class SessionsController < ApplicationController
             render json: { message: "User not found" }
         end
     end
+
+    def destroy 
+        if session[:user_id]
+            reset_session
+        end
+    end
 end
