@@ -3,7 +3,7 @@ class InputHandler {
         document.addEventListener("keydown", (e) => {
             switch(e.key) {
                 case "a": 
-                    player
+                    player.moveLeft();
                     break;
                 case "d": 
                     alert("move right");

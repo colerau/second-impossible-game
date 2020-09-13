@@ -1,10 +1,11 @@
 class Player {
     constructor(gameWidth, gameHeight) {
-        this.xPosition = 100;
+        this.xPosition = 500;
         this.yPosition = 700;
         this.width = 50;
         this.height = 50;
-        
+        this.maxSpeed = 10;
+        this.speed = 0;
     }
 
     draw(context) {
@@ -29,7 +30,18 @@ class Player {
     //     this.xPosition += (5 / deltaTime);
     // }
 
-    moveLeft() {
-        
-    }
+    // moveLeft() {
+    //     this.speed = -this.maxSpeed;
+    //     return this.speed;
+    // }
+
+    // update(deltaTime) {
+    //     if (!deltaTime) return;
+
+
+    //     this.xPosition += 5 / deltaTime;
+    //     // this.xPosition += this.speed;
+    //     // return this.xPosition;
+    // }
+
 }

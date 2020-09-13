@@ -32,14 +32,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // player.draw(context);
 
-    gameLoop(context, player);
+    // let lastTime = 0;
+
+
+
+
+
+
+    // gameLoop(context, player);
 
 });
 
-function gameLoop(context, player) {
-    context.clearRect(0, 0, 800, 600);
-    player.draw(context);
-}
+// function gameLoop(context, player, timestamp, lastTime) {
+
+//     // how much time has passed
+//     let deltaTime = timestamp - lastTime;
+//     lastTime = timestamp;
+
+
+
+//     debugger;
+//     context.clearRect(0, 0, 800, 600);
+//     player.update(deltaTime);
+//     player.draw(context);
+
+
+//     // passes gameLoop() the timestamp
+//     requestAnimationFrame(gameLoop);
+// }
 
 function signUp(e) {
     e.preventDefault();
