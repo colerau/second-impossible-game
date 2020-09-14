@@ -34,10 +34,6 @@ let context = canvas.getContext('2d');
 
 
 
-// x: bigger values, more to right; y: bigger values, more down
-console.log(context);
-
-
 
 
 let player = new Player();
