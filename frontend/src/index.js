@@ -15,6 +15,7 @@ class Player {
     }
 
     draw(context) {
+        context.fillStyle = "#00f"
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
@@ -101,6 +102,33 @@ class Player {
 
 }
 
+class Enemy {
+    constructor() {
+        this.width = 60;
+        this.height = 60;
+
+        this.speed = 20;
+        this.axis; 
+
+
+        this.position = {
+            x: 400,
+            y: 0
+        }
+    }
+
+    draw(context) {
+        context.fillStyle = "#f00"
+        context.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+
+    update(deltaTime) {
+        if (!deltaTime) return;
+
+        this.position.y += this.speed;
+    }
+}
+
 class InputHandler {
     constructor(player) {
         document.addEventListener("keydown", (e) => {
@@ -164,6 +192,7 @@ class InputHandler {
 }
 
 
+
 const signUpButton = document.getElementById("signUpButton");
 
 const logInButton = document.querySelector("#logInButton");
@@ -184,6 +213,7 @@ let context = canvas.getContext('2d');
 
 let player = new Player();
 new InputHandler(player);
+let enemy = new Enemy();
 
 let lastTime = 0;
 
@@ -197,6 +227,9 @@ function gameLoop(timestamp) {
     context.clearRect(0, 0, 800, 600);
     player.update(deltaTime);
     player.draw(context);
+
+    enemy.update(deltaTime);
+    enemy.draw(context);
 
     requestAnimationFrame(gameLoop);
 }
