@@ -84,7 +84,7 @@ class Player {
             this.position.y += this.speed;
         }
 
-
+        
         if (this.position.x < 0) {
             this.position.x = 0;
         }
@@ -123,7 +123,7 @@ class InputHandler {
                 case "o":
                     player.moveTopLeft();
                     break;
-                case "k":
+                case "l":
                     player.moveDownLeft();
                     break;
                 case ";":
@@ -152,10 +152,10 @@ class InputHandler {
                 case "o":
                     player.stop();
                     break;
-                case "k":
+                case "l":
                     player.stop();
                     break;
-                case "l":
+                case ";":
                     player.stop();
                     break;
             }
