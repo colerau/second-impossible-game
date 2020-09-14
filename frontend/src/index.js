@@ -52,14 +52,14 @@ class Player {
         if (this.position.x < 0) {
             this.position.x = 0;
         }
-        if (this.position.x > 800) {
-            this.position.x = 800;
+        if (this.position.x + this.width > 800) {
+            this.position.x = 800 - this.width;
         }
         if (this.position.y < 0) {
             this.position.y = 0;
         }
-        if (this.position.y > 600) {
-            this.position.y = 600;
+        if (this.position.y + this.height > 600) {
+            this.position.y = 600 - this.height;
         }
     }
 
