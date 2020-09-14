@@ -38,7 +38,10 @@ class Player {
         this.axis = "y";
     }
 
-    // if flag is 1, y coordinates are to be used
+    stop() {
+        this.speed = 0;
+    }
+
     update(deltaTime) {
         if (!deltaTime) return;
 
@@ -80,6 +83,23 @@ class InputHandler {
                     break;
                 case "s":
                     player.moveDown();
+                    break;
+            }
+        })
+
+        document.addEventListener("keyup", (e) => {
+            switch(e.key) {
+                case "a":
+                    player.stop();
+                    break;
+                case "w":
+                    player.stop();
+                    break;
+                case "d":
+                    player.stop();
+                    break;
+                case "s":
+                    player.stop();
                     break;
             }
         })
