@@ -2,6 +2,11 @@ class Player {
     constructor() {
         this.width = 30;
         this.height = 30;
+
+        this.maxSpeed = 5;
+        this.speed = 0;
+
+
         this.position = {
             x: 20,
             y: 20
@@ -12,11 +17,42 @@ class Player {
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
+    moveLeft() {
+        this.speed = -this.maxSpeed;
+    }
+
     update(deltaTime) {
         if (!deltaTime) return;
-        this.position.x += 5 / deltaTime; 
+        this.position.x += this.speed;
+
+        if (this.position.x < 0) {
+            this.position.x = 0;
+        }
+    }
+
+}
+
+class InputHandler {
+    constructor(player) {
+        document.addEventListener("keydown", (e) => {
+            switch(e.key) {
+                case "a":
+                    player.moveLeft();
+                    break;
+                case "w":
+                    alert("move up")
+                    break;
+                case "d":
+                    alert("move right")
+                    break;
+                case "s":
+                    alert("move down")
+                    break;
+            }
+        })
     }
 }
+
 
 const signUpButton = document.getElementById("signUpButton");
 
@@ -37,6 +73,7 @@ let canvas = document.getElementById("gameScreen");
 let context = canvas.getContext('2d');
 
 let player = new Player();
+new InputHandler(player);
 
 let lastTime = 0;
 
