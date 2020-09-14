@@ -9,8 +9,8 @@ class Player {
 
 
         this.position = {
-            x: 20,
-            y: 20
+            x: 0,
+            y: 0
         }
     }
 
@@ -110,9 +110,8 @@ class Enemy {
         this.speed = 20;
         this.axis; 
 
-
         this.position = {
-            x: 400,
+            x: 400 - this.width / 2,
             y: 0
         }
     }
@@ -126,6 +125,22 @@ class Enemy {
         if (!deltaTime) return;
 
         this.position.y += this.speed;
+
+        // if (this.position.y + this.height > 600) {
+        //     this.position.y = 600 - this.height;
+        //     this.position.y = -this.speed;
+        // }
+        // if (this.position.y < 0) {
+        //     this.position.y = this.speed;
+        // }
+
+        if (this.position.y + this.height > 600) {
+            this.speed = -this.speed;
+        }
+        if (this.position.y < 0) {
+            this.speed = 20;
+        }
+
     }
 }
 
