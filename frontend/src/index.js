@@ -1,17 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const signUpButton = document.getElementById("signUpButton");
-
-    const logInButton = document.querySelector("#logInButton");
-    
-    signUpButton.addEventListener("click", (e) => {
-        signUp(e);
-    })
-    
-    logInButton.addEventListener("click", (e) => {
-        logIn(e);
-    })
-});
-
 class Player {
     constructor() {
         this.width = 150;
@@ -29,21 +15,24 @@ class Player {
     }
 }
 
+const signUpButton = document.getElementById("signUpButton");
+
+const logInButton = document.querySelector("#logInButton");
+
+signUpButton.addEventListener("click", (e) => {
+    signUp(e);
+})
+
+logInButton.addEventListener("click", (e) => {
+    logIn(e);
+})
+
 let canvas = document.getElementById("gameScreen");
 let context = canvas.getContext('2d');
-
-
-
-
 
 let player = new Player();
 
 player.draw(context);
-
-
-
-
-
 
 const BACKEND_URL = "http://localhost:3000";
 
