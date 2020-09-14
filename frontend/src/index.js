@@ -5,6 +5,7 @@ class Player {
 
         this.maxSpeed = 5;
         this.speed = 0;
+        this.axis; 
 
 
         this.position = {
@@ -19,14 +20,46 @@ class Player {
 
     moveLeft() {
         this.speed = -this.maxSpeed;
+        this.axis = "x";
     }
 
+    moveRight() {
+        this.speed = this.maxSpeed;
+        this.axis = "x";
+    }
+
+    moveDown() {
+        this.speed = this.maxSpeed;
+        this.axis = "y";
+    }
+
+    moveUp() {
+        this.speed = -this.maxSpeed;
+        this.axis = "y";
+    }
+
+    // if flag is 1, y coordinates are to be used
     update(deltaTime) {
         if (!deltaTime) return;
-        this.position.x += this.speed;
+
+
+        if (this.axis === "y") {
+            this.position.y += this.speed;
+        } else if (this.axis === "x") {
+            this.position.x += this.speed;
+        }
 
         if (this.position.x < 0) {
             this.position.x = 0;
+        }
+        if (this.position.x > 800) {
+            this.position.x = 800;
+        }
+        if (this.position.y < 0) {
+            this.position.y = 0;
+        }
+        if (this.position.y > 600) {
+            this.position.y = 600;
         }
     }
 
@@ -40,13 +73,13 @@ class InputHandler {
                     player.moveLeft();
                     break;
                 case "w":
-                    alert("move up")
+                    player.moveUp();
                     break;
                 case "d":
-                    alert("move right")
+                    player.moveRight();
                     break;
                 case "s":
-                    alert("move down")
+                    player.moveDown();
                     break;
             }
         })
@@ -83,7 +116,7 @@ function gameLoop(timestamp) {
 
 
 
-
+    // (x, y, width, height)
     context.clearRect(0, 0, 800, 600);
     player.update(deltaTime);
     player.draw(context);
