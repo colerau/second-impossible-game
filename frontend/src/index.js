@@ -38,6 +38,26 @@ class Player {
         this.axis = "y";
     }
 
+    moveTopRight() {
+        this.speed = this.maxSpeed;
+        this.axis = "xy1";
+    }
+
+    moveTopLeft() {
+        this.speed = this.maxSpeed;
+        this.axis = "xy2";
+    }
+
+    moveDownLeft() {
+        this.speed = this.maxSpeed;
+        this.axis = "xy3";
+    }
+
+    moveDownRight() {
+        this.speed = this.maxSpeed;
+        this.axis = "xy4";
+    }
+
     stop() {
         this.speed = 0;
     }
@@ -50,7 +70,20 @@ class Player {
             this.position.y += this.speed;
         } else if (this.axis === "x") {
             this.position.x += this.speed;
+        } else if (this.axis === "xy1") {
+            this.position.x += this.speed;
+            this.position.y += -this.speed;
+        } else if (this.axis === "xy2") {
+            this.position.x += -this.speed;
+            this.position.y += -this.speed;
+        } else if (this.axis === "xy3") {
+            this.position.x += -this.speed;
+            this.position.y += this.speed;
+        } else if (this.axis === "xy4") {
+            this.position.x += this.speed;
+            this.position.y += this.speed;
         }
+
 
         if (this.position.x < 0) {
             this.position.x = 0;
@@ -84,6 +117,18 @@ class InputHandler {
                 case "s":
                     player.moveDown();
                     break;
+                case "p":
+                    player.moveTopRight();
+                    break;
+                case "o":
+                    player.moveTopLeft();
+                    break;
+                case "k":
+                    player.moveDownLeft();
+                    break;
+                case ";":
+                    player.moveDownRight();
+
             }
         })
 
@@ -99,6 +144,18 @@ class InputHandler {
                     player.stop();
                     break;
                 case "s":
+                    player.stop();
+                    break;
+                case "p":
+                    player.stop();
+                    break;
+                case "o":
+                    player.stop();
+                    break;
+                case "k":
+                    player.stop();
+                    break;
+                case "l":
                     player.stop();
                     break;
             }
