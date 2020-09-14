@@ -1,6 +1,6 @@
 class Player {
     constructor() {
-        this.width = 150;
+        this.width = 30;
         this.height = 30;
         this.position = {
             x: 20,
@@ -9,9 +9,12 @@ class Player {
     }
 
     draw(context) {
-        context.clearRect(0, 0, 800, 600);
-
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+
+    update(deltaTime) {
+        if (!deltaTime) return;
+        this.position.x += 5 / deltaTime; 
     }
 }
 
@@ -27,12 +30,47 @@ logInButton.addEventListener("click", (e) => {
     logIn(e);
 })
 
+
+// ! start game code 
+
 let canvas = document.getElementById("gameScreen");
 let context = canvas.getContext('2d');
 
 let player = new Player();
 
-player.draw(context);
+let lastTime = 0;
+
+function gameLoop(timestamp) {
+    let deltaTime = timestamp - lastTime;
+    lastTime = timestamp;
+
+
+
+
+    context.clearRect(0, 0, 800, 600);
+    player.update(deltaTime);
+    player.draw(context);
+
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ! end game code
+
 
 const BACKEND_URL = "http://localhost:3000";
 
