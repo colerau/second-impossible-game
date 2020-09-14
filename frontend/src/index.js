@@ -12,47 +12,45 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 });
 
-// console.log("yeet");
+class Player {
+    constructor() {
+        this.width = 150;
+        this.height = 30;
+        this.position = {
+            x: 20,
+            y: 20
+        }
+    }
+
+    draw(context) {
+        context.clearRect(0, 0, 800, 600);
+
+        context.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+}
+
+let canvas = document.getElementById("gameScreen");
+let context = canvas.getContext('2d');
+
+
+
+// x: bigger values, more to right; y: bigger values, more down
+console.log(context);
+
+
+
+
+let player = new Player();
+
+player.draw(context);
+
+
+
+
+
 
 const BACKEND_URL = "http://localhost:3000";
-// fetch(`${BACKEND_URL}/users`)
-//     .then(resp => resp.json())
-//     .then(parsedResp => console.log(parsedResp));
 
-const canvas = document.getElementById("gameScreen");
-const context = canvas.getContext('2d');
-// context.clearRect(0, 0, 800, 600);
-// context.fillStyle = "#00f";
-// // fillRect(x coord, y coord, width, height)
-// context.fillRect(20, 20, 20, 20);
-const GAME_WIDTH = 800; 
-const GAME_HEIGHT = 600;
-
-const player = new Player(GAME_WIDTH, GAME_HEIGHT);
-const movement = new InputHandler(player);
-
-// player.draw(context);
-
-// let lastTime = 0;
-
-// gameLoop(context, player);
-
-
-// function gameLoop(context, player, timestamp, lastTime) {
-    
-    //     // how much time has passed
-    //     let deltaTime = timestamp - lastTime;
-    //     lastTime = timestamp;
-    
-    //     debugger;
-    //     context.clearRect(0, 0, 800, 600);
-    //     player.update(deltaTime);
-    //     player.draw(context);
-    
-    //     // passes gameLoop() the timestamp
-    //     requestAnimationFrame(gameLoop);
-    // }
-    
 function signUp(e) {
     e.preventDefault();
     console.log("user hit sign up button");
@@ -118,4 +116,3 @@ function logIn(e) {
         }
     });
 }
-
