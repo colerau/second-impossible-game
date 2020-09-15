@@ -144,6 +144,47 @@ class Enemy {
     }
 }
 
+class Goal {
+    constructor() {
+        this.width = 30;
+        this.height = 30;
+
+        this.position = {
+            x: 780 - this.width,
+            y: 580 - this.height
+        }
+    }
+
+    draw(context) {
+        context.fillStyle = "#FFFF00"
+        context.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+
+    update(deltaTime) {
+        if (!deltaTime) return;
+
+        // this.position.y += this.speed;
+
+        // // if (this.position.y + this.height > 600) {
+        // //     this.position.y = 600 - this.height;
+        // //     this.position.y = -this.speed;
+        // // }
+        // // if (this.position.y < 0) {
+        // //     this.position.y = this.speed;
+        // // }
+
+        // if (this.position.y + this.height > 600) {
+        //     this.speed = -this.speed;
+        // }
+        // if (this.position.y < 0) {
+        //     this.speed = 20;
+        // }
+
+
+
+    }
+}
+
 class InputHandler {
     constructor(player) {
         document.addEventListener("keydown", (e) => {
@@ -237,6 +278,7 @@ let enemyXPosition = 400 - enemyWidth / 2;
 let enemy1 = new Enemy(enemyXPosition);
 let enemy2 = new Enemy(200 - enemyWidth / 2);
 let enemy3 = new Enemy(600 - enemyWidth / 2);
+let goal = new Goal();
 
 let lastTime = 0;
 
@@ -259,6 +301,9 @@ function gameLoop(timestamp) {
 
     enemy3.update(deltaTime);
     enemy3.draw(context);
+
+    goal.update(deltaTime);
+    goal.draw(context);
 
     requestAnimationFrame(gameLoop);
 }
