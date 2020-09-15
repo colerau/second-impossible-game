@@ -103,7 +103,7 @@ class Player {
 }
 
 class Enemy {
-    constructor() {
+    constructor(xPosition) {
         this.width = 60;
         this.height = 60;
 
@@ -111,7 +111,7 @@ class Enemy {
         this.axis; 
 
         this.position = {
-            x: 400 - this.width / 2,
+            x: xPosition,
             y: 0
         }
     }
@@ -207,6 +207,7 @@ class InputHandler {
 }
 
 
+// ! Global Scope
 
 const signUpButton = document.getElementById("signUpButton");
 
@@ -221,6 +222,8 @@ logInButton.addEventListener("click", (e) => {
 })
 
 
+
+
 // ! start game code 
 
 let canvas = document.getElementById("gameScreen");
@@ -228,7 +231,11 @@ let context = canvas.getContext('2d');
 
 let player = new Player();
 new InputHandler(player);
-let enemy = new Enemy();
+const enemyWidth = 60;
+const enemyHeight = 60;
+let enemyXPosition = 400 - enemyWidth / 2;
+let enemy1 = new Enemy(enemyXPosition);
+let enemy2 = new Enemy(200 - enemyWidth / 2);
 
 let lastTime = 0;
 
@@ -243,8 +250,11 @@ function gameLoop(timestamp) {
     player.update(deltaTime);
     player.draw(context);
 
-    enemy.update(deltaTime);
-    enemy.draw(context);
+    enemy1.update(deltaTime);
+    enemy1.draw(context);
+
+    enemy2.update(deltaTime);
+    enemy2.draw(context);
 
     requestAnimationFrame(gameLoop);
 }
@@ -268,6 +278,8 @@ gameLoop();
 
 
 const BACKEND_URL = "http://localhost:3000";
+
+// ! End Global Scope
 
 function signUp(e) {
     e.preventDefault();
