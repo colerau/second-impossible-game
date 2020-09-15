@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   get '/logout', to: 'sessions#destroy'
+
+  post '/increase-levels-completed', to: 'users#increase_level'
 end

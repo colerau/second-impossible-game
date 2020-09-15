@@ -223,6 +223,7 @@ class Enemy {
             rect1.y + rect1.height > rect5.y) {
             // collision detected!
             win();
+            updateLevelsCompleted();
             this.game.player.stop();
             this.game.player.position.x = 20;
             this.game.player.position.y = 20;
@@ -465,7 +466,11 @@ function signUp(e) {
             currentUser.innerText = parsedResp.username;
             
             const highScore = document.querySelector("#levels-completed");
-            highScore.innerText = `${parsedResp.levels_completed} levels completed`;
+            if (parsedResp.levels_completed === 0) {
+                highScore.innerText = `${parsedResp.levels_completed} levels completed`;
+            } else if (parsedResp.levels_completed === 1) {
+                highScore.innerText = `${parsedResp.levels_completed} level completed`;
+            }
         }
     });
 }
@@ -498,11 +503,50 @@ function logIn(e) {
             currentUser.innerText = parsedResp.username;
             
             const highScore = document.querySelector("#levels-completed");
-            highScore.innerText = `${parsedResp.levels_completed} levels completed`;
+            if (parsedResp.levels_completed === 0) {
+                highScore.innerText = `${parsedResp.levels_completed} levels completed`;
+            } else if (parsedResp.levels_completed === 1) {
+                highScore.innerText = `${parsedResp.levels_completed} level completed`;
+            }
         }
     });
 }
 
 function win() {
     alert("You Win!");
+}
+
+function updateLevelsCompleted() {
+    let sentence = document.querySelector("#current-user");
+    
+    if (!(sentence.innerText === "You are not currently logged in")) {
+        console.log("if logged in, this should appear")
+        console.log(sentence.innerText);
+        let username = sentence.innerText;
+    
+        let formData = {
+            username: username
+        }
+        
+        let configObj = {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        }
+        
+        fetch(`${BACKEND_URL}/increase-levels-completed`, configObj)
+        .then(resp => resp.json())
+        .then(parsedResp => {
+            console.log(parsedResp);            
+            const highScore = document.querySelector("#levels-completed");
+            if (parsedResp.levels_completed === 0) {
+                highScore.innerText = `${parsedResp.levels_completed} levels completed`;
+            } else if (parsedResp.levels_completed === 1) {
+                highScore.innerText = `${parsedResp.levels_completed} level completed`;
+            }
+        });
+    }
 }

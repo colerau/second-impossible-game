@@ -19,6 +19,15 @@ class UsersController < ApplicationController
         end
     end
 
+    def increase_level
+        user = User.find_by(username: params[:username])
+        if user 
+            user.levels_completed = 1
+            user.save
+            render json: user, only: [:id, :username, :levels_completed]
+        end
+    end
+
 
     private 
 
