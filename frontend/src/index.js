@@ -1,5 +1,5 @@
 class Player {
-    constructor() {
+    constructor(game) {
         this.width = 30;
         this.height = 30;
 
@@ -103,7 +103,7 @@ class Player {
 }
 
 class Enemy {
-    constructor(xPosition) {
+    constructor(xPosition, game) {
         this.width = 60;
         this.height = 60;
 
@@ -137,7 +137,7 @@ class Enemy {
 }
 
 class Goal {
-    constructor() {
+    constructor(game) {
         this.width = 30;
         this.height = 30;
 
@@ -233,13 +233,33 @@ class Game {
         const enemyWidth = 60;
         const enemyHeight = 60;
         let enemyXPosition = 400 - enemyWidth / 2;
-        
-        this.player = new Player();
+
+
+
+
+
+
+        // think of it like ... new Player(self);
+        // this references the game object.
+
+
+        // console.log(this) returns:
+
+        // Game {gameWidth: 800, gameHeight: 600}
+            // enemy1: Enemy {width: 60, height: 60, speed: 20, position: {…}}
+            // enemy2: Enemy {width: 60, height: 60, speed: 20, position: {…}}
+            // enemy3: Enemy {width: 60, height: 60, speed: 20, position: {…}}
+            // gameHeight: 600
+            // gameWidth: 800
+            // goal: Goal {width: 30, height: 30, position: {…}}
+            // player: Player {width: 30, height: 30, maxSpeed: 5, speed: 0, position: {…}}
+            // __proto__: Object
+        this.player = new Player(this);
         new InputHandler(this.player);
-        this.enemy1 = new Enemy(enemyXPosition);
+        this.enemy1 = new Enemy(enemyXPosition, this);
         this.enemy2 = new Enemy(200 - enemyWidth / 2);
         this.enemy3 = new Enemy(600 - enemyWidth / 2);
-        this.goal = new Goal();
+        this.goal = new Goal(this);
     }
 
     update(deltaTime) {
