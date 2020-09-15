@@ -175,6 +175,14 @@ class Enemy {
             height: this.game.enemy3.height
         }
 
+        // ! goal 
+        let rect5 = {
+            x: this.game.goal.position.x,
+            y: this.game.goal.position.y, 
+            width: this.game.goal.width,
+            height: this.game.goal.height
+        }
+
         // collision between player and enemy1
         // enemy1 is the middle red square
         if (rect1.x < rect2.x + rect2.width &&
@@ -204,6 +212,18 @@ class Enemy {
             rect1.y < rect4.y + rect4.height &&
             rect1.y + rect1.height > rect4.y) {
             // collision detected!
+            this.game.player.position.x = 20;
+            this.game.player.position.y = 20;
+        }
+
+        // collision between player and goal
+        if (rect1.x < rect5.x + rect5.width &&
+            rect1.x + rect1.width > rect5.x &&
+            rect1.y < rect5.y + rect5.height &&
+            rect1.y + rect1.height > rect5.y) {
+            // collision detected!
+            win();
+            this.game.player.stop();
             this.game.player.position.x = 20;
             this.game.player.position.y = 20;
         }
@@ -481,4 +501,8 @@ function logIn(e) {
             highScore.innerText = `${parsedResp.levels_completed} levels completed`;
         }
     });
+}
+
+function win() {
+    alert("You Win!");
 }
