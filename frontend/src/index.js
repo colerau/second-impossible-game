@@ -564,6 +564,32 @@ function newComment() {
         e.preventDefault();
         let commentText = document.getElementById("newUserComment").value
         console.log(commentText);
+
+        let formData = {
+            comment: commentText
+        }
+        
+        let configObj = {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        }
+        
+        fetch(`${BACKEND_URL}/`, configObj)
+        .then(resp => resp.json())
+        .then(parsedResp => {
+            console.log(parsedResp);            
+            const highScore = document.querySelector("#levels-completed");
+            if (parsedResp.levels_completed === 0) {
+                highScore.innerText = `${parsedResp.levels_completed} levels completed`;
+            } else if (parsedResp.levels_completed === 1) {
+                highScore.innerText = `${parsedResp.levels_completed} level completed`;
+            }
+        });
+
     })
 }
 
