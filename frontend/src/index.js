@@ -7,6 +7,8 @@ class Player {
         this.speed = 0;
         this.axis; 
 
+        this.game = game;
+    
 
         this.position = {
             x: 20,
@@ -114,6 +116,9 @@ class Enemy {
             x: xPosition,
             y: 0
         }
+
+
+        this.game = game;
     }
 
     draw(context) {
@@ -122,6 +127,8 @@ class Enemy {
     }
 
     update(deltaTime) {
+
+        // console.log(this.game.player.position);
         if (!deltaTime) return;
 
         this.position.y += this.speed;
@@ -133,6 +140,70 @@ class Enemy {
             this.speed = 20;
         }
 
+        // * check collision with player
+        // let bottomOfEnemy = this.position.y
+
+        // ! player
+        let rect1 = {
+            x: this.game.player.position.x,
+            y: this.game.player.position.y, 
+            width: this.game.player.width,
+            height: this.game.player.height
+        }
+
+        // ! enemy1
+        let rect2 = {
+            x: this.game.enemy1.position.x,
+            y: this.game.enemy1.position.y, 
+            width: this.game.enemy1.width,
+            height: this.game.enemy1.height
+        }
+
+        // ! enemy2
+        let rect3 = {
+            x: this.game.enemy2.position.x,
+            y: this.game.enemy2.position.y, 
+            width: this.game.enemy2.width,
+            height: this.game.enemy2.height
+        }
+
+        // ! enemy3
+        let rect4 = {
+            x: this.game.enemy3.position.x,
+            y: this.game.enemy3.position.y, 
+            width: this.game.enemy3.width,
+            height: this.game.enemy3.height
+        }
+
+        // collision between player and enemy1
+        // enemy1 is the middle red square
+        if (rect1.x < rect2.x + rect2.width &&
+            rect1.x + rect1.width > rect2.x &&
+            rect1.y < rect2.y + rect2.height &&
+            rect1.y + rect1.height > rect2.y) {
+            // collision detected!
+            console.log("collision between p and e1")
+        }
+
+        // collision between player and enemy2
+        // enemy2 is the left red square
+        if (rect1.x < rect3.x + rect3.width &&
+            rect1.x + rect1.width > rect3.x &&
+            rect1.y < rect3.y + rect3.height &&
+            rect1.y + rect1.height > rect3.y) {
+            // collision detected!
+            console.log("collision between p and e2")
+        }
+
+        // collision between player and enemy3
+        // enemy3 is the right red square
+        if (rect1.x < rect4.x + rect4.width &&
+            rect1.x + rect1.width > rect4.x &&
+            rect1.y < rect4.y + rect4.height &&
+            rect1.y + rect1.height > rect4.y) {
+            // collision detected!
+            console.log("collision between p and e3")
+        }
     }
 }
 
@@ -257,8 +328,8 @@ class Game {
         this.player = new Player(this);
         new InputHandler(this.player);
         this.enemy1 = new Enemy(enemyXPosition, this);
-        this.enemy2 = new Enemy(200 - enemyWidth / 2);
-        this.enemy3 = new Enemy(600 - enemyWidth / 2);
+        this.enemy2 = new Enemy((200 - enemyWidth / 2), this);
+        this.enemy3 = new Enemy((600 - enemyWidth / 2), this);
         this.goal = new Goal(this);
     }
 
