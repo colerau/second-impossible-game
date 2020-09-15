@@ -230,11 +230,12 @@ class Game {
     }
 
     start() {
-        this.player = new Player();
-        new InputHandler(this.player);
         const enemyWidth = 60;
         const enemyHeight = 60;
         let enemyXPosition = 400 - enemyWidth / 2;
+        
+        this.player = new Player();
+        new InputHandler(this.player);
         this.enemy1 = new Enemy(enemyXPosition);
         this.enemy2 = new Enemy(200 - enemyWidth / 2);
         this.enemy3 = new Enemy(600 - enemyWidth / 2);
