@@ -182,7 +182,8 @@ class Enemy {
             rect1.y < rect2.y + rect2.height &&
             rect1.y + rect1.height > rect2.y) {
             // collision detected!
-            console.log("collision between p and e1")
+            this.game.player.position.x = 20;
+            this.game.player.position.y = 20;
         }
 
         // collision between player and enemy2
@@ -192,7 +193,8 @@ class Enemy {
             rect1.y < rect3.y + rect3.height &&
             rect1.y + rect1.height > rect3.y) {
             // collision detected!
-            console.log("collision between p and e2")
+            this.game.player.position.x = 20;
+            this.game.player.position.y = 20;
         }
 
         // collision between player and enemy3
@@ -202,7 +204,8 @@ class Enemy {
             rect1.y < rect4.y + rect4.height &&
             rect1.y + rect1.height > rect4.y) {
             // collision detected!
-            console.log("collision between p and e3")
+            this.game.player.position.x = 20;
+            this.game.player.position.y = 20;
         }
     }
 }
