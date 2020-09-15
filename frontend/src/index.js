@@ -236,6 +236,7 @@ const enemyHeight = 60;
 let enemyXPosition = 400 - enemyWidth / 2;
 let enemy1 = new Enemy(enemyXPosition);
 let enemy2 = new Enemy(200 - enemyWidth / 2);
+let enemy3 = new Enemy(600 - enemyWidth / 2);
 
 let lastTime = 0;
 
@@ -255,6 +256,9 @@ function gameLoop(timestamp) {
 
     enemy2.update(deltaTime);
     enemy2.draw(context);
+
+    enemy3.update(deltaTime);
+    enemy3.draw(context);
 
     requestAnimationFrame(gameLoop);
 }
