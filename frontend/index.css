@@ -41,3 +41,12 @@ h1 {
     background-color: lightBlue;
 }
 
+#controls {
+    text-align: center;
+
+    font-family: Arial, helvetica, sans-serif;
+
+    color: purple;
+
+}
+
