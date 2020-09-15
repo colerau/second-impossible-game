@@ -107,7 +107,7 @@ class Enemy {
         this.width = 60;
         this.height = 60;
 
-        this.speed = 20;
+        this.speed = 18;
         this.axis; 
 
         this.position = {
