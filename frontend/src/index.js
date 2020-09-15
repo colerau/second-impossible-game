@@ -126,14 +126,6 @@ class Enemy {
 
         this.position.y += this.speed;
 
-        // if (this.position.y + this.height > 600) {
-        //     this.position.y = 600 - this.height;
-        //     this.position.y = -this.speed;
-        // }
-        // if (this.position.y < 0) {
-        //     this.position.y = this.speed;
-        // }
-
         if (this.position.y + this.height > 600) {
             this.speed = -this.speed;
         }
@@ -162,24 +154,6 @@ class Goal {
 
     update(deltaTime) {
         if (!deltaTime) return;
-
-        // this.position.y += this.speed;
-
-        // // if (this.position.y + this.height > 600) {
-        // //     this.position.y = 600 - this.height;
-        // //     this.position.y = -this.speed;
-        // // }
-        // // if (this.position.y < 0) {
-        // //     this.position.y = this.speed;
-        // // }
-
-        // if (this.position.y + this.height > 600) {
-        //     this.speed = -this.speed;
-        // }
-        // if (this.position.y < 0) {
-        //     this.speed = 20;
-        // }
-
 
 
     }
@@ -247,6 +221,48 @@ class InputHandler {
     }
 }
 
+class Game {
+    constructor() {
+        this.gameWidth = 800;
+        this.gameHeight = 600;
+
+
+    }
+
+    start() {
+        this.player = new Player();
+        new InputHandler(this.player);
+        const enemyWidth = 60;
+        const enemyHeight = 60;
+        let enemyXPosition = 400 - enemyWidth / 2;
+        this.enemy1 = new Enemy(enemyXPosition);
+        this.enemy2 = new Enemy(200 - enemyWidth / 2);
+        this.enemy3 = new Enemy(600 - enemyWidth / 2);
+        this.goal = new Goal();
+    }
+
+    update(deltaTime) {
+        this.player.update(deltaTime);
+        this.enemy1.update(deltaTime);
+        this.enemy2.update(deltaTime);
+        this.enemy3.update(deltaTime);
+        this.goal.update(deltaTime);
+    }
+
+    draw(context) {
+        this.player.draw(context);
+        this.enemy1.draw(context);
+        this.enemy2.draw(context);
+        this.enemy3.draw(context);
+        this.goal.draw(context);
+    }
+}
+
+
+
+
+
+
 
 // ! Global Scope
 
@@ -270,15 +286,9 @@ logInButton.addEventListener("click", (e) => {
 let canvas = document.getElementById("gameScreen");
 let context = canvas.getContext('2d');
 
-let player = new Player();
-new InputHandler(player);
-const enemyWidth = 60;
-const enemyHeight = 60;
-let enemyXPosition = 400 - enemyWidth / 2;
-let enemy1 = new Enemy(enemyXPosition);
-let enemy2 = new Enemy(200 - enemyWidth / 2);
-let enemy3 = new Enemy(600 - enemyWidth / 2);
-let goal = new Goal();
+let game = new Game();
+game.start();
+
 
 let lastTime = 0;
 
@@ -290,33 +300,15 @@ function gameLoop(timestamp) {
 
     // (x, y, width, height)
     context.clearRect(0, 0, 800, 600);
-    player.update(deltaTime);
-    player.draw(context);
 
-    enemy1.update(deltaTime);
-    enemy1.draw(context);
 
-    enemy2.update(deltaTime);
-    enemy2.draw(context);
-
-    enemy3.update(deltaTime);
-    enemy3.draw(context);
-
-    goal.update(deltaTime);
-    goal.draw(context);
+    game.update(deltaTime);
+    game.draw(context);
 
     requestAnimationFrame(gameLoop);
 }
 
 gameLoop();
-
-
-
-
-
-
-
-
 
 
 
