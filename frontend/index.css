@@ -1,4 +1,4 @@
-h1, h2, h3 {
+h1, h2, h3, h4, p {
     font-family: Arial, helvetica, sans-serif;
 }
 
@@ -6,7 +6,7 @@ h1 {
     text-align: center;
 }
 
-#accountForms {
+.general-forms {
     font-family: Arial, helvetica, sans-serif;
 
     text-align: center;
@@ -30,6 +30,14 @@ h1 {
 }
 
 #signUpButton:hover {
+    background-color: lightBlue;
+}
+
+.comment {
+    background-color: lightpink
+}
+
+#newCommentButton:hover {
     background-color: lightBlue;
 }
 

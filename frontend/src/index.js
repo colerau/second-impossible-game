@@ -395,8 +395,6 @@ logInButton.addEventListener("click", (e) => {
 })
 
 
-
-
 // ! start game code 
 
 let canvas = document.getElementById("gameScreen");
@@ -499,6 +497,8 @@ function logIn(e) {
     .then(parsedResp => {
         console.log(parsedResp);
         if (parsedResp.username) {
+            newComment();
+
             const currentUser = document.querySelector("#current-user");
             currentUser.innerText = parsedResp.username;
             
@@ -548,5 +548,31 @@ function updateLevelsCompleted() {
                 highScore.innerText = `${parsedResp.levels_completed} level completed`;
             }
         });
+    }
+}
+
+function newComment() {
+    console.log("in newComment func")
+    
+    let user = document.querySelector("#current-user");
+
+    let shareButton = document.getElementById("newCommentButton");
+
+   
+
+    shareButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        let commentText = document.getElementById("newUserComment").value
+        console.log(commentText);
+    })
+}
+
+function loggedIn() {
+    let sentence = document.querySelector("#current-user");
+    
+    if (!(sentence.innerText === "You are not currently logged in")) {
+        return true;
+    } else {
+        return false;
     }
 }
