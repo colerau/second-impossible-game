@@ -1,4 +1,4 @@
-# second-hardest-game
+# the-second-hardest-game
 A simple version of the [World's Hardest Game](https://www.coolmathgames.com/0-worlds-hardest-game)
 
 Can you make it to the yellow square?
