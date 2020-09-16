@@ -500,7 +500,8 @@ function logIn(e) {
     .then(parsedResp => {
         console.log(parsedResp);
         if (parsedResp.username) {
-            newComment();
+           
+            newComment(parsedResp.id);
 
             const currentUser = document.querySelector("#current-user");
             currentUser.innerText = parsedResp.username;
@@ -554,16 +555,16 @@ function updateLevelsCompleted() {
     }
 }
 
-function newComment() {
+function newComment(user_id) {
     console.log("in newComment func")
-    
-    let user = document.querySelector("#current-user");
 
     let shareButton = document.getElementById("newCommentButton");
 
    
 
     shareButton.addEventListener("click", (e) => {
+        let user = document.querySelector("#current-user").innerText;
+
         e.preventDefault();
         let commentText = document.getElementById("newUserComment").value
         console.log(commentText);
@@ -580,17 +581,24 @@ function newComment() {
             },
             body: JSON.stringify(formData)
         }
-        
-        fetch(`${BACKEND_URL}/`, configObj)
+
+        fetch(`${BACKEND_URL}/users/${user_id}/comments`, configObj)
         .then(resp => resp.json())
         .then(parsedResp => {
-            console.log(parsedResp);            
-            const highScore = document.querySelector("#levels-completed");
-            if (parsedResp.levels_completed === 0) {
-                highScore.innerText = `${parsedResp.levels_completed} levels completed`;
-            } else if (parsedResp.levels_completed === 1) {
-                highScore.innerText = `${parsedResp.levels_completed} level completed`;
-            }
+            console.log(parsedResp);
+            let commentsSection = document.querySelector(".comment-list");
+            let commentDiv = document.createElement("div");
+            commentDiv.classList.add("a-comment");
+            let commentHeader = document.createElement("h4");
+            let commentP = document.createElement("p");
+            commentHeader.innerText = parsedResp.user.username;
+            commentP.innerText = parsedResp.text;
+            commentsSection.appendChild(commentDiv);
+            commentDiv.appendChild(commentHeader);
+            commentDiv.appendChild(commentP);
+            let br = document.createElement("br");
+            commentDiv.appendChild(br);        
+
         });
 
     })
@@ -627,21 +635,5 @@ function getComments() {
             let br = document.createElement("br");
             commentDiv.appendChild(br);
         });
-
-
-
-
-
-
-        // let commentUsername = document.querySelector("#comment-username");
-        // let commentText = document.querySelector("#comment-text");
-        // console.log(commentsSection);
-        // commentUsername.innerText = parsedResp[0].user.username;
-        // console.log(commentText.innerText);
-        // commentText.innerText = parsedResp[0].text;
-        // commentsSection.appendChild(commentUsername);
-        // commentsSection.appendChild(commentText);
-
-
     })
 }

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
         if user
             session[:user_id] = user.id 
-            render json: user, only: [:username, :levels_completed]
+            render json: user, only: [:username, :levels_completed, :id]
         else
             render json: { message: "User not found" }
         end
