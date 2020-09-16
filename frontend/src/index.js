@@ -456,6 +456,9 @@ function signUp(e) {
     .then(resp => resp.json())
     .then(parsedResp => {
         if (parsedResp.username) {
+            
+            newComment(parsedResp.id);
+
             const currentUser = document.querySelector("#current-user");
             currentUser.innerText = parsedResp.username;
             

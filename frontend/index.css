@@ -34,7 +34,9 @@ h1 {
 }
 
 .a-comment {
-    background-color: lightpink
+    background-color: lightpink;
+    padding-left: 3px;
+    
 }
 
 #newCommentButton:hover {
