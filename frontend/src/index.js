@@ -395,6 +395,7 @@ logInButton.addEventListener("click", (e) => {
 })
 
 
+
 // ! start game code 
 
 let canvas = document.getElementById("gameScreen");
@@ -433,6 +434,8 @@ gameLoop();
 
 
 const BACKEND_URL = "http://localhost:3000";
+
+getComments();
 
 // ! End Global Scope
 
@@ -601,4 +604,22 @@ function loggedIn() {
     } else {
         return false;
     }
+}
+
+function getComments() {
+    fetch(`${BACKEND_URL}/comments`)
+    .then(resp => resp.json())
+    .then(parsedResp => {
+        console.log(parsedResp);
+      
+        let commentsSection = document.querySelector(".comment");
+        let commentUsername = document.querySelector("#comment-username");
+        let commentText = document.querySelector("#comment-text");
+        console.log(commentsSection);
+        commentUsername.innerText = parsedResp[0].user.username;
+        console.log(commentText.innerText);
+        commentText.innerText = parsedResp[0].text;
+        // commentsSection.appendChild(commentUsername);
+        // commentsSection.appendChild(commentText);
+    })
 }
