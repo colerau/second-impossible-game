@@ -127,8 +127,6 @@ class Enemy {
     }
 
     update(deltaTime) {
-
-        // console.log(this.game.player.position);
         if (!deltaTime) return;
 
         this.position.y += this.speed;
@@ -139,9 +137,6 @@ class Enemy {
         if (this.position.y < 0) {
             this.speed = 20;
         }
-
-        // * check collision with player
-        // let bottomOfEnemy = this.position.y
 
         // ! player
         let rect1 = {
@@ -441,7 +436,6 @@ getComments();
 
 function signUp(e) {
     e.preventDefault();
-    console.log("user hit sign up button");
     
     let userInputForUsername = document.querySelector("#usernameForSignUp").value;
     
@@ -461,7 +455,6 @@ function signUp(e) {
     fetch(`${BACKEND_URL}/users`, configObj)
     .then(resp => resp.json())
     .then(parsedResp => {
-        console.log(parsedResp);
         if (parsedResp.username) {
             const currentUser = document.querySelector("#current-user");
             currentUser.innerText = parsedResp.username;
@@ -478,7 +471,6 @@ function signUp(e) {
 
 function logIn(e) {
     e.preventDefault();
-    console.log("user hit log in button");
     
     let userInputForUsername = document.querySelector("#usernameForLogIn").value;
     
@@ -498,7 +490,6 @@ function logIn(e) {
     fetch(`${BACKEND_URL}/login`, configObj)
     .then(resp => resp.json())
     .then(parsedResp => {
-        console.log(parsedResp);
         if (parsedResp.username) {
            
             newComment(parsedResp.id);
@@ -524,8 +515,6 @@ function updateLevelsCompleted() {
     let sentence = document.querySelector("#current-user");
     
     if (!(sentence.innerText === "You are not currently logged in")) {
-        console.log("if logged in, this should appear")
-        console.log(sentence.innerText);
         let username = sentence.innerText;
     
         let formData = {
@@ -543,8 +532,7 @@ function updateLevelsCompleted() {
         
         fetch(`${BACKEND_URL}/increase-levels-completed`, configObj)
         .then(resp => resp.json())
-        .then(parsedResp => {
-            console.log(parsedResp);            
+        .then(parsedResp => {         
             const highScore = document.querySelector("#levels-completed");
             if (parsedResp.levels_completed === 0) {
                 highScore.innerText = `${parsedResp.levels_completed} levels completed`;
@@ -556,7 +544,6 @@ function updateLevelsCompleted() {
 }
 
 function newComment(user_id) {
-    console.log("in newComment func")
 
     let shareButton = document.getElementById("newCommentButton");
 
@@ -567,7 +554,6 @@ function newComment(user_id) {
 
         e.preventDefault();
         let commentText = document.getElementById("newUserComment").value
-        console.log(commentText);
 
         let formData = {
             comment: commentText
@@ -585,7 +571,6 @@ function newComment(user_id) {
         fetch(`${BACKEND_URL}/users/${user_id}/comments`, configObj)
         .then(resp => resp.json())
         .then(parsedResp => {
-            console.log(parsedResp);
             let commentsSection = document.querySelector(".comment-list");
             let commentDiv = document.createElement("div");
             commentDiv.classList.add("a-comment");
@@ -618,7 +603,6 @@ function getComments() {
     fetch(`${BACKEND_URL}/comments`)
     .then(resp => resp.json())
     .then(parsedResp => {
-        console.log(parsedResp);
       
      
         parsedResp.forEach( e => {
