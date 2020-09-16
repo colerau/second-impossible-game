@@ -1,6 +1,6 @@
 # the-second-hardest-game
 
-## [Blog Post](https://dev.to/colerau/my-flatiron-school-javascript-project-3nkd)
+## [Blog Post](https://dev.to/colerau/my-flatiron-school-javascript-project-3nkd) • [Demo](https://www.youtube.com/watch?v=WrzEvacPbyU)
 
 A simple version of the [World's Hardest Game](https://www.coolmathgames.com/0-worlds-hardest-game).
 
