@@ -10,4 +10,7 @@ u1 = User.create(username: "colerau", password_digest: SecureRandom.hex)
 
 c1 = Comment.create(text: "this is the first comment", user_id: 1)
 
+c2 = Comment.create(text: "this is another comment", user_id: 1)
+
 u1.comments << c1
+u1.comments << c2

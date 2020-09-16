@@ -612,14 +612,36 @@ function getComments() {
     .then(parsedResp => {
         console.log(parsedResp);
       
-        let commentsSection = document.querySelector(".comment");
-        let commentUsername = document.querySelector("#comment-username");
-        let commentText = document.querySelector("#comment-text");
-        console.log(commentsSection);
-        commentUsername.innerText = parsedResp[0].user.username;
-        console.log(commentText.innerText);
-        commentText.innerText = parsedResp[0].text;
+     
+        parsedResp.forEach( e => {
+            let commentsSection = document.querySelector(".comment-list");
+            let commentDiv = document.createElement("div");
+            commentDiv.classList.add("a-comment");
+            let commentHeader = document.createElement("h4");
+            let commentP = document.createElement("p");
+            commentHeader.innerText = e.user.username;
+            commentP.innerText = e.text;
+            commentsSection.appendChild(commentDiv);
+            commentDiv.appendChild(commentHeader);
+            commentDiv.appendChild(commentP);
+            let br = document.createElement("br");
+            commentDiv.appendChild(br);
+        });
+
+
+
+
+
+
+        // let commentUsername = document.querySelector("#comment-username");
+        // let commentText = document.querySelector("#comment-text");
+        // console.log(commentsSection);
+        // commentUsername.innerText = parsedResp[0].user.username;
+        // console.log(commentText.innerText);
+        // commentText.innerText = parsedResp[0].text;
         // commentsSection.appendChild(commentUsername);
         // commentsSection.appendChild(commentText);
+
+
     })
 }
